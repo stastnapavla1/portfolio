@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pavla Šťastná | Módní návrhářka</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fdfaf8;
+      color: #2d2a26;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; }
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+    .hero {
+      background: linear-gradient(to bottom, #f8efea, #fdfaf8);
+      border-bottom: 1px solid #e9dfd8;
+      padding: 80px 0;
+    }
+    .hero-grid,
+    .about-grid,
+    .cards {
+      display: grid;
+      gap: 32px;
+    }
+    .hero-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+    }
+    .about-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: start;
+    }
+    .cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-size: 12px;
+      color: #a06b74;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: 58px;
+      line-height: 1.1;
+      margin: 0;
+    }
+    h2 {
+      font-size: 38px;
+      line-height: 1.2;
+      margin: 0 0 18px;
+    }
+    h3 {
+      font-size: 24px;
+      margin: 0 0 12px;
+    }
+    p {
+      margin: 0;
+      color: #5d5752;
+      font-size: 18px;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: #1f2937;
+      color: white;
+    }
+    .btn-secondary {
+      background: white;
+      color: #2d2a26;
+      border: 1px solid #cdbdb3;
+    }
+    .photo-placeholder,
+    .card-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #7a6d65;
+      background: #efe4dd;
+    }
+    .photo-box {
+      background: white;
+      padding: 16px;
+      border-radius: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+    .photo-placeholder {
+      min-height: 500px;
+      border-radius: 24px;
+      padding: 24px;
+    }
+    section {
+      padding: 80px 0;
+    }
+    .panel {
+      background: white;
+      border: 1px solid #eadfd7;
+      border-radius: 32px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+    .panel ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #5d5752;
+      font-size: 18px;
+    }
+    .panel li + li { margin-top: 12px; }
+    .cards article {
+      background: #fffaf7;
+      border: 1px solid #eadfd7;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+    .card-image {
+      min-height: 240px;
+      padding: 20px;
+    }
+    .card-content {
+      padding: 24px;
+    }
+    .contact-box {
+      background: #f8efea;
+      border: 1px solid #eadfd7;
+      border-radius: 32px;
+      padding: 56px 32px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+    .contact-box p {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      h1 { font-size: 42px; }
+      h2 { font-size: 30px; }
+      .photo-placeholder { min-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Módní návrhářka</div>
+        <h1>Pavla Šťastná</h1>
+        <p>
+          Tvořím ženskou módu s důrazem na eleganci, pohodlí a nadčasový střih.
+          Každý model vzniká s citem pro detail, kvalitní materiály a skutečný život žen.
+        </p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#o-mne">O mně</a>
+          <a class="btn btn-secondary" href="#kolekce">Kolekce</a>
+        </div>
+      </div>
+      <div class="photo-box">
+        <div class="photo-placeholder">
+          <div>
+            <div class="eyebrow">Hero fotografie</div>
+            <div style="font-size: 28px; color: #5d5752;">Prostor pro úvodní portrét nebo editorial</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="o-mne">
+    <div class="container about-grid">
+      <div>
+        <div class="eyebrow">O mně</div>
+        <h2>Móda, která má styl i smysl</h2>
+        <p>
+          Ve své tvorbě propojuji čistou estetiku, ženskost a praktické potřeby moderní ženy.
+          Věřím, že oblečení má být krásné na pohled, příjemné na nošení a dlouhodobě nositelné.
+        </p>
+      </div>
+      <div class="panel">
+        <ul>
+          <li>Autorský přístup ke střihu a detailu</li>
+          <li>Důraz na kvalitní materiály</li>
+          <li>Nadčasová ženská silueta</li>
+          <li>Cit pro eleganci i funkčnost</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="kolekce" style="background: white;">
+    <div class="container">
+      <div class="eyebrow">Kolekce</div>
+      <h2>Vybraná tvorba</h2>
+      <div class="cards" style="margin-top: 32px;">
+        <article>
+          <div class="card-image">Náhled kolekce</div>
+          <div class="card-content">
+            <h3>Elegantní šaty</h3>
+            <p>Modely navržené pro slavnostní chvíle i každodenní ženský styl.</p>
+          </div>
+        </article>
+        <article>
+          <div class="card-image">Náhled kolekce</div>
+          <div class="card-content">
+            <h3>Minimalistické topy</h3>
+            <p>Čisté linie, jemné barvy a střihy, které snadno kombinujete.</p>
+          </div>
+        </article>
+        <article>
+          <div class="card-image">Náhled kolekce</div>
+          <div class="card-content">
+            <h3>Autorské kolekce</h3>
+            <p>Promyšlené kousky s důrazem na osobitost, detail a pohodlí.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="container">
+      <div class="contact-box">
+        <div class="eyebrow">Kontakt</div>
+        <h2>Pojďme vytvořit něco krásného</h2>
+        <p>
+          Máte zájem o spolupráci, autorský model nebo prezentaci kolekce?
+          Ozvěte se a společně najdeme podobu, která bude odpovídat vaší představě.
+        </p>
+        <div class="buttons" style="justify-content: center; margin-top: 28px;">
+          <a class="btn btn-primary" href="mailto:info@example.com">Napsat e-mail</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
