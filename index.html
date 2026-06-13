@@ -165,6 +165,45 @@
   </div>
 </section>
 
+<!-- NIKITA SLIDER -->
+<section id="nikita-slider" aria-labelledby="nikita-slider-title">
+  <div class="nikita-slider-head">
+    <div>
+      <p class="section-label reveal">Nikita</p>
+      <h2 class="section-title reveal delay-1" id="nikita-slider-title">Autorská kolekce</h2>
+    </div>
+    <div class="nikita-slider-controls reveal delay-2">
+      <button class="slider-btn" type="button" data-slider-prev aria-label="Předchozí fotografie">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="slider-btn" type="button" data-slider-next aria-label="Další fotografie">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="nikita-slider-wrap reveal delay-2">
+    <div class="nikita-slider-track" id="nikitaSliderTrack" tabindex="0" aria-label="Fotografie kolekce Nikita">
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-1-resized.jpg" alt="Model kolekce Nikita 1" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-2-resized.jpg" alt="Model kolekce Nikita 2" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-3-resized.jpg" alt="Model kolekce Nikita 3" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-4-resized.jpg" alt="Model kolekce Nikita 4" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-5-resized.jpg" alt="Model kolekce Nikita 5" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-6-resized.jpg" alt="Model kolekce Nikita 6" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-7-resized.jpg" alt="Model kolekce Nikita 7" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-8-resized.jpg" alt="Model kolekce Nikita 8" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-9-resized.jpg" alt="Model kolekce Nikita 9" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-10-resized.jpg" alt="Model kolekce Nikita 10" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-11-resized.jpg" alt="Model kolekce Nikita 11" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-12-resized.jpg" alt="Model kolekce Nikita 12" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-13-resized.jpg" alt="Model kolekce Nikita 13" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-14-resized.jpg" alt="Model kolekce Nikita 14" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-15-resized.jpg" alt="Model kolekce Nikita 15" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-16-resized.jpg" alt="Model kolekce Nikita 16" loading="lazy" decoding="async"></figure>
+      <figure class="nikita-slide"><img src="/pics/nikita-slider/nikita-kolekce-17-resized.jpg" alt="Model kolekce Nikita 17" loading="lazy" decoding="async"></figure>
+    </div>
+  </div>
+</section>
+
 <!-- PROJEKTY -->
 <section id="projekty">
   <p class="section-label reveal">Portfolio</p>
@@ -298,7 +337,7 @@
     requestAnimationFrame(animateRing);
   }
   animateRing();
-  document.querySelectorAll('a, button, .spec-card, .exp-card, .proj-card').forEach(el => {
+  document.querySelectorAll('a, button, .spec-card, .exp-card, .proj-card, .nikita-slide').forEach(el => {
     el.addEventListener('mouseenter', () => {
       ring.style.width = '60px'; ring.style.height = '60px'; ring.style.opacity = '0.3';
     });
@@ -306,6 +345,38 @@
       ring.style.width = '36px'; ring.style.height = '36px'; ring.style.opacity = '0.5';
     });
   });
+
+  // Nikita horizontal slider
+  const nikitaTrack = document.getElementById('nikitaSliderTrack');
+  const sliderPrev = document.querySelector('[data-slider-prev]');
+  const sliderNext = document.querySelector('[data-slider-next]');
+
+  function getSlideStep() {
+    const slide = nikitaTrack?.querySelector('.nikita-slide');
+    if (!slide) return 0;
+    const gap = parseFloat(getComputedStyle(nikitaTrack).columnGap || getComputedStyle(nikitaTrack).gap) || 0;
+    return slide.getBoundingClientRect().width + gap;
+  }
+
+  function updateSliderButtons() {
+    if (!nikitaTrack || !sliderPrev || !sliderNext) return;
+    const maxScroll = nikitaTrack.scrollWidth - nikitaTrack.clientWidth - 1;
+    sliderPrev.disabled = nikitaTrack.scrollLeft <= 1;
+    sliderNext.disabled = nikitaTrack.scrollLeft >= maxScroll;
+  }
+
+  function moveSlider(direction) {
+    if (!nikitaTrack) return;
+    nikitaTrack.scrollBy({ left: getSlideStep() * direction, behavior: 'smooth' });
+  }
+
+  if (nikitaTrack && sliderPrev && sliderNext) {
+    sliderPrev.addEventListener('click', () => moveSlider(-1));
+    sliderNext.addEventListener('click', () => moveSlider(1));
+    nikitaTrack.addEventListener('scroll', updateSliderButtons, { passive: true });
+    window.addEventListener('resize', updateSliderButtons);
+    updateSliderButtons();
+  }
 
   // Intersection Observer for reveal animations
   const observer = new IntersectionObserver((entries) => {
