@@ -361,7 +361,7 @@
   }
   .nikita-slide:hover img { transform: scale(1.025); }
   .nikita-slide-label {
-    position: absolute; top: 24px; left: 24px;
+    position: absolute; bottom: 24px; left: 24px;
     max-width: calc(100% - 48px);
     padding: 8px 14px;
     color: var(--navy); background: rgba(247,240,227,0.92);
@@ -571,7 +571,7 @@
     .nikita-slider-head { align-items: center; margin-bottom: 36px; }
     .slider-btn { width: 42px; height: 42px; }
     .nikita-slide { flex-basis: calc(100vw - 72px); }
-    .nikita-slide-label { top: 18px; left: 18px; max-width: calc(100% - 36px); }
+    .nikita-slide-label { bottom: 18px; left: 18px; max-width: calc(100% - 36px); }
     .proj-grid { grid-template-columns: 1fr; }
     .hero-name { font-size: 42px; }
   }
